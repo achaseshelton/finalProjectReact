@@ -1,25 +1,89 @@
-import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react'
+import Register from './Pages/Register';
+import Menu from './Components/Menu';
+import Home from './Pages/Home';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import Dashboard from './Pages/Dashboard';
+import Results from './Pages/Results';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [user, setUser] = useState({});
+    const [token, setToken] = useState("")
+    const navigate = useNavigate()
+    const [restaurants, setRestaurants] = useState({})
+
+    const saveToken = (newToken) => {
+        console.log(newToken);
+        localStorage.setItem("authToken", newToken);
+        setToken(newToken)
+        navigate("/dashboard")
+    }
+
+    const userChange = () => {
+        let authToken = localStorage.getItem("authToken")
+        console.log(authToken);
+        if (authToken) {
+            setToken(authToken)
+            navigate("/dashboard")
+        }
+        // do something if we dont have a token
+    }
+
+    const getUser = () => {
+        if (token.length > 0) {
+            axios({
+                method: "get",
+                url: "https://laravel-library-austenshelton638243.codeanyapp.com/api/v1/user",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Headers": "Content-Type",
+                    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
+                    "Access-Control-Allow-Credentials": true,
+                    "Authorization": `Bearer ${token}`,
+                }
+            })
+            .then(response => setUser(response.data))
+        }
+    }
+    useEffect(userChange, []);
+    useEffect(getUser, [token]);
+
+    return (
+        <>
+            <Menu
+                user={user}
+                setUser={setUser}
+                saveToken={saveToken}
+                token={token}
+                setToken={setToken} />
+            <Routes>
+                <Route path="/register" element={<Register
+                    user={user}
+                    setUser={setUser}
+                />} />
+                <Route path="/dashboard" element={<Dashboard
+                    user={user}
+                    setUser={setUser}
+                />} />
+                <Route path="/results" element={<Results
+                    restaurants={restaurants}
+                    setRestaurants={setRestaurants}
+                />} />
+                <Route path="/" element={<Home
+                    user={user}
+                    setUser={setUser}
+                    restaurants={restaurants}
+                    setRestaurants={setRestaurants}
+                />} />
+            </Routes>
+        </>
+
+    );
 }
 
 export default App;
