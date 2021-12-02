@@ -13,7 +13,7 @@ export default function Menu(props) {
             data: {
                 "grant_type": "password",
                 "client_id": 2,
-                "client_secret": "LtU62PVANlXsnrm8F72732wDhxQWeqByaTokbjza",
+                "client_secret": "gIevDb6REGmvTLROmiprdePkOfPkn2tCK4YHcACr",
                 "username": props.user.email,
                 "password": props.user.password,
                 "scope": "",
@@ -81,14 +81,12 @@ export default function Menu(props) {
                             type="text"
                             placeholder="Email"
                             id="email"
-                            value={props.user.email || ""}
                             onChange={handleChange} required />
                         <Form.Control
                             className="m-1"
                             placeholder="Password"
                             id="password"
                             type='password'
-                            value={props.user.password || ""}
                             onChange={handleChange} required />
                         <Button className="m-1" variant="primary" onClick={login}>Sign In</Button>
                     </Navbar.Collapse>

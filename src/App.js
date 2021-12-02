@@ -55,7 +55,6 @@ function App() {
             url: "https://laravel-library-austenshelton638243.codeanyapp.com/api/restaurants",
         })
             .then(response => { 
-                console.log(response)
                 setRestaurants(response.data.data)})
     }
 
@@ -75,6 +74,8 @@ function App() {
                 <Route path="/register" element={<Register
                     user={user}
                     setUser={setUser}
+                    saveToken={saveToken}
+                    getUser={getUser}
                 />} />
                 <Route path="/dashboard" element={<Dashboard
                     user={user}

@@ -25,7 +25,7 @@ export default function RestaurantCard({ data, token, getUser }) {
     }
     return (
         <Col>
-            <Card className="text-center m-1">
+            <Card className="text-center m-2">
                 <Card.Body>
                     {/* make the name be a target link that sends to the restaurant website */}
                     <Card.Title>{data.name}</Card.Title>
