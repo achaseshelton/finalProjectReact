@@ -13,7 +13,7 @@ export default function Menu(props) {
             data: {
                 "grant_type": "password",
                 "client_id": 2,
-                "client_secret": "FftjsPGC8hxu20jwtOCd7dqIvIYbw9FX9YMZbU83",
+                "client_secret": "LtU62PVANlXsnrm8F72732wDhxQWeqByaTokbjza",
                 "username": props.user.email,
                 "password": props.user.password,
                 "scope": "",
@@ -37,26 +37,29 @@ export default function Menu(props) {
             });
     }
 
-    const logout = e => {        
+    const logout = e => {
         axios({
             method: "get",
             url: "https://laravel-library-austenshelton638243.codeanyapp.com/api/v1/logout",
-            headers: {"Accept": "application/json",
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers": "Content-Type",
-            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
-            "Access-Control-Allow-Credentials": true,
-            "Authorization": `Bearer ${props.token}`,}
-            
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
+                "Access-Control-Allow-Credentials": true,
+                "Authorization": `Bearer ${props.token}`,
+            }
+
         })
-        .then(r => {
-            console.log("token deleted")
-            props.setToken("")
-            props.setUser({})
-            navigate("/")
-    })
-}
+            .then(r => {
+                console.log("token deleted")
+                props.setToken("")
+                props.setUser({})
+                localStorage.setItem("authToken", "")
+                navigate("/")
+            })
+    }
 
     const handleChange = e => {
         props.setUser(prevState => ({
@@ -94,15 +97,18 @@ export default function Menu(props) {
         )
     }
     return (
-        <Navbar>
+        <Navbar className="border border-dark border-3 border-rounded m-5">
             <Container>
-                <Navbar.Brand href="#home">Navbar with text</Navbar.Brand>
+                <Navbar.Brand href="/">Navbar with text</Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
+                    <Link to='/dashboard' className="m-3">
+                        <>Dashboard</>
+                    </Link>
                     <Navbar.Text>
-                        Hello {props.user.data.user_data.name}!
+                        Hello {props.user.data?.user_data?.name}!
                     </Navbar.Text>
-                    <Button className="m-1" variant="primary" onClick={logout}>Log Out</Button>
+                    <Button className="m-3" variant="primary" onClick={logout}>Log Out</Button>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

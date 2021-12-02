@@ -13,7 +13,7 @@ function App() {
     const [user, setUser] = useState({});
     const [token, setToken] = useState("")
     const navigate = useNavigate()
-    const [restaurants, setRestaurants] = useState({})
+    const [restaurants, setRestaurants] = useState([])
 
     const saveToken = (newToken) => {
         console.log(newToken);
@@ -27,7 +27,6 @@ function App() {
         console.log(authToken);
         if (authToken) {
             setToken(authToken)
-            navigate("/dashboard")
         }
         // do something if we dont have a token
     }
@@ -47,10 +46,21 @@ function App() {
                     "Authorization": `Bearer ${token}`,
                 }
             })
-            .then(response => setUser(response.data))
+                .then(response => setUser(response.data))
         }
     }
+    const getRestaurants = () => {
+        axios({
+            method: "get",
+            url: "https://laravel-library-austenshelton638243.codeanyapp.com/api/restaurants",
+        })
+            .then(response => { 
+                console.log(response)
+                setRestaurants(response.data.data)})
+    }
+
     useEffect(userChange, []);
+    useEffect(getRestaurants, []);
     useEffect(getUser, [token]);
 
     return (
@@ -72,13 +82,12 @@ function App() {
                 />} />
                 <Route path="/results" element={<Results
                     restaurants={restaurants}
-                    setRestaurants={setRestaurants}
+                    token={token}
+                    getUser={getUser}
                 />} />
                 <Route path="/" element={<Home
                     user={user}
                     setUser={setUser}
-                    restaurants={restaurants}
-                    setRestaurants={setRestaurants}
                 />} />
             </Routes>
         </>
