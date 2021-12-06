@@ -1,8 +1,9 @@
 import React from 'react'
 import axios from 'axios'
 import { Card, Col, Button, ListGroup, ListGroupItem } from 'react-bootstrap'
+import { removeFavorite } from "../Utilities/favoriteHelper"
 
-export default function RestaurantCard({ data, token, getUser }) {
+export default function RestaurantCard({ favorite, data, token, getUser }) {
 
     const addToFavorite = id => {
         axios({
@@ -34,7 +35,10 @@ export default function RestaurantCard({ data, token, getUser }) {
                         <ListGroupItem>{data.cuisine}</ListGroupItem>
                         <ListGroupItem>{data.price}</ListGroupItem>
                     </ListGroup>
-                    <Button variant="primary" onClick={() => addToFavorite(data.id)}>Add to Favorites</Button>
+                    {favorite ?
+                        <Button variant="primary" onClick={() => removeFavorite(data.id, token, getUser)}>Remove From Favorites</Button>
+                        :
+                        <Button variant="primary" onClick={() => addToFavorite(data.id)}>Add to Favorites</Button>}
                 </Card.Body>
             </Card>
         </Col>

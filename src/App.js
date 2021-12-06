@@ -46,7 +46,9 @@ function App() {
                     "Authorization": `Bearer ${token}`,
                 }
             })
-                .then(response => setUser(response.data))
+                .then(response => {
+                    // console.log(response)
+                    setUser(response.data.data[0])})
         }
     }
     const getRestaurants = () => {
@@ -55,7 +57,8 @@ function App() {
             url: "https://laravel-library-austenshelton638243.codeanyapp.com/api/restaurants",
         })
             .then(response => { 
-                setRestaurants(response.data.data)})
+                // console.log(response)
+                setRestaurants(response.data)})
     }
 
     useEffect(userChange, []);
@@ -84,6 +87,7 @@ function App() {
                 <Route path="/results" element={<Results
                     restaurants={restaurants}
                     token={token}
+                    user={user}
                     getUser={getUser}
                 />} />
                 <Route path="/" element={<Home

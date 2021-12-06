@@ -104,7 +104,7 @@ export default function Menu(props) {
                         <>Dashboard</>
                     </Link>
                     <Navbar.Text>
-                        Hello {props.user.data?.user_data?.name}!
+                        Hello {props.user?.name}!
                     </Navbar.Text>
                     <Button className="m-3" variant="primary" onClick={logout}>Log Out</Button>
                 </Navbar.Collapse>
