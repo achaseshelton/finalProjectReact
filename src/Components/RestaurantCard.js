@@ -1,29 +1,8 @@
 import React from 'react'
-import axios from 'axios'
 import { Card, Col, Button, ListGroup, ListGroupItem } from 'react-bootstrap'
-import { removeFavorite } from "../Utilities/favoriteHelper"
+import { removeFavorite, addToFavorite } from "../Utilities/favoriteHelper"
 
 export default function RestaurantCard({ favorite, data, token, getUser }) {
-
-    const addToFavorite = id => {
-        axios({
-            method: "post",
-            url: "https://laravel-library-austenshelton638243.codeanyapp.com/api/v1/favorite",
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Headers": "Content-Type",
-                "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
-                "Access-Control-Allow-Credentials": true,
-                "Authorization": `Bearer ${token}`
-            },
-            data: { restaurant_id: id }
-        })
-            .then(response => {
-                getUser();
-            })
-    }
     return (
         <Col>
             <Card className="text-center m-2">

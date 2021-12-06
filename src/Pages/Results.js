@@ -14,6 +14,7 @@ export default function Results(props) {
                 {/* do i have a restaurant id that is equal to an id in my favorites */}
                 {props.restaurants.map((restaurant, index) => {
                         let userSaved = restaurant.favorites.find(f => f.user_id === props.user.id)
+                        console.log(restaurant)
                         return <RestaurantCard key={index} data={restaurant} getUser={props.getUser} token={props.token} favorite={userSaved} />
                     })}
             </Row>
