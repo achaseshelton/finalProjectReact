@@ -65,7 +65,8 @@ function App() {
                 setRestaurants(response.data)})
     }
 
-    const filterRestaurants = () => {
+    const filterRestaurants = e => {
+        e.preventDefault()
         axios({
             method: "get",
             url: "https://laravel-library-austenshelton638243.codeanyapp.com/api/filter?cuisine=" + filter.cuisine + "&price=" + filter.price,

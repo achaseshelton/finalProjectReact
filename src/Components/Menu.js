@@ -29,7 +29,6 @@ export default function Menu(props) {
             },
         })
             .then(r => {
-
                 props.saveToken(r.data.access_token)
             })
             .catch(function (error) {

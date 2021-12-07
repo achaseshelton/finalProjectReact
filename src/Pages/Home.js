@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import axios from 'axios'
 import { Container, Row, Col, Button, Form } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
@@ -29,7 +29,7 @@ export default function Home(props) {
         <Container>
             <Form>
                 <Row>
-                    <Col>
+                    <Col className="col-5">
                         <Form.Label>Price</Form.Label>
                         <Form.Select name="price" value={props.filter.price || ""} onChange={handleChange}>
                             <option value="Choose...">Choose...</option>
@@ -40,7 +40,7 @@ export default function Home(props) {
                             <option value="5">5</option>
                         </Form.Select>
                     </Col>
-                    <Col>
+                    <Col className="col-5">
                         <Form.Label>Cuisine</Form.Label>
                         <Form.Select name="cuisine" value={props.filter.cuisine || ""} onChange={handleChange}>
                             <option value="Choose...">Choose...</option>
@@ -60,18 +60,14 @@ export default function Home(props) {
                             <option value="Steakhouse">Steakhouse</option>
                         </Form.Select>
                     </Col>
-                </Row>
-                <Row className="m-3">
-                    <Form.Control id="name" onChange={handleChange} placeholder="Search" />
+                    <Col className="col-1 m-1 align-items-bottom">
+                        <Button onClick={props.filterRestaurants} size="lg" variant="primary">Search!</Button>
+                    </Col>
                 </Row>
             </Form>
             <Row className="justify-content-center">
-                <Col className="col-5 m-1">
+                <Col className="col-4 m-3">
                     <Button variant="primary" size="lg" onClick={getRandomRestaurants}>I'm Feeling Hungry</Button>
-                </Col>
-                <Col className="col-5 m-1">
-                    <Button onClick={props.filterRestaurants} size="lg" variant="primary">Search!</Button>
-                    {/* <Button as={Link} to="/results" size="lg" variant="primary">Search!</Button> */}
                 </Col>
             </Row>
         </Container>
