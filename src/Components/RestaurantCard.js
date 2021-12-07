@@ -2,7 +2,7 @@ import React from 'react'
 import { Card, Col, Button, ListGroup, ListGroupItem } from 'react-bootstrap'
 import { removeFavorite, addToFavorite } from "../Utilities/favoriteHelper"
 
-export default function RestaurantCard({ favorite, data, token, getUser }) {
+export default function RestaurantCard({ favorite, data, token, getRestaurants }) {    
     return (
         <Col>
             <Card className="text-center m-2">
@@ -15,9 +15,9 @@ export default function RestaurantCard({ favorite, data, token, getUser }) {
                         <ListGroupItem>{data.price}</ListGroupItem>
                     </ListGroup>
                     {favorite ?
-                        <Button variant="primary" onClick={() => removeFavorite(data.id, token, getUser)}>Remove From Favorites</Button>
+                        <Button variant="primary" onClick={() => removeFavorite(data.id, token, getRestaurants)}>Remove From Favorites</Button>
                         :
-                        <Button variant="primary" onClick={() => addToFavorite(data.id)}>Add to Favorites</Button>}
+                        <Button variant="primary" onClick={() => addToFavorite(data.id, token, getRestaurants)}>Add to Favorites</Button>}
                 </Card.Body>
             </Card>
         </Col>

@@ -16,9 +16,18 @@ export default function Dashboard(props) {
                     <Col>Favorite Restaurants</Col>
                 </Row>
                 <Row className="row-cols-2 justify-content-center">
-                    {props.user?.favorites.map((favorite, id) => {
-                        console.log(favorite)
-                        return <RestaurantCard key={id} data={favorite.restaurant} getUser={props.getUser} token={props.token} favorite={props.user} />
+                    {props.restaurants.map((restaurant, index) => {
+                        let userSaved = restaurant.favorites.find(f => f.user_id === props.user.id)
+                        console.log(userSaved)
+                        if (userSaved) {
+                            return <RestaurantCard
+                            key={index}
+                            data={restaurant}
+                            getRestaurants={props.getRestaurants}
+                            token={props.token}
+                            location={props.location}
+                            favorite={userSaved} />
+                        }
                     })}
                 </Row>
             </Container>

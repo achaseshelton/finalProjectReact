@@ -4,16 +4,19 @@ import React, { useState, useEffect } from 'react'
 import Register from './Pages/Register';
 import Menu from './Components/Menu';
 import Home from './Pages/Home';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Dashboard from './Pages/Dashboard';
 import Results from './Pages/Results';
+
 
 function App() {
 
     const [user, setUser] = useState({});
-    const [token, setToken] = useState("")
-    const navigate = useNavigate()
-    const [restaurants, setRestaurants] = useState([])
+    const [token, setToken] = useState("");
+    const navigate = useNavigate();
+    const [restaurants, setRestaurants] = useState([]);
+    const [filter, setFilter] = useState({});
+    const location = useLocation();
 
     const saveToken = (newToken) => {
         console.log(newToken);
@@ -51,14 +54,27 @@ function App() {
                     setUser(response.data.data[0])})
         }
     }
+
     const getRestaurants = () => {
+        console.log(window.location)
         axios({
             method: "get",
             url: "https://laravel-library-austenshelton638243.codeanyapp.com/api/restaurants",
         })
-            .then(response => { 
-                // console.log(response)
+            .then(response => {
                 setRestaurants(response.data)})
+    }
+
+    const filterRestaurants = () => {
+        axios({
+            method: "get",
+            url: "https://laravel-library-austenshelton638243.codeanyapp.com/api/filter?cuisine=" + filter.cuisine + "&price=" + filter.price,
+        })
+            .then(response => {
+                console.log(response.data)
+                setRestaurants(response.data)
+                navigate('/results')
+            })
     }
 
     useEffect(userChange, []);
@@ -82,17 +98,28 @@ function App() {
                 />} />
                 <Route path="/dashboard" element={<Dashboard
                     user={user}
+                    restaurants={restaurants}
                     setUser={setUser}
+                    getRestaurants={getRestaurants}
+                    location={location}
+                    token={token}
                 />} />
                 <Route path="/results" element={<Results
                     restaurants={restaurants}
                     token={token}
+                    setUser={setUser}
                     user={user}
-                    getUser={getUser}
+                    location={location}
+                    filterRestaurants={filterRestaurants}
+                    getRestaurants={getRestaurants}
                 />} />
                 <Route path="/" element={<Home
                     user={user}
                     setUser={setUser}
+                    filter={filter}
+                    setFilter={setFilter}
+                    filterRestaurants={filterRestaurants}
+                    setRestaurants={setRestaurants}
                 />} />
             </Routes>
         </>
