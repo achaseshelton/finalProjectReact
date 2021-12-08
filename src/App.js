@@ -66,10 +66,23 @@ function App() {
             })
     }
 
+    const urlHelper = () => {
+        let str = "?";
+        
+         if(filter.hasOwnProperty("cuisine")) {
+            str = str + "cuisine=" + filter.cuisine
+        } 
+        if(filter.hasOwnProperty("price")) {
+            str = str + "price=" + filter.price
+        }
+
+        return "https://laravel-library-austenshelton638243.codeanyapp.com/api/filter" + str;
+    }
+
     const filterRestaurants = () => {
         axios({
             method: "get",
-            url: "https://laravel-library-austenshelton638243.codeanyapp.com/api/filter?cuisine=" + filter.cuisine + "&price=" + filter.price,
+            url: urlHelper(),
         })
             .then(response => {
                 console.log(response.data)
@@ -124,7 +137,7 @@ function App() {
                     setRestaurants={setRestaurants}
                 />} />
             </Routes>
-            </>
+        </>
     );
 }
 

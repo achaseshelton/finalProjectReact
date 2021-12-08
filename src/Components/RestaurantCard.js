@@ -2,8 +2,7 @@ import React from 'react'
 import { Card, Col, Button, ListGroup, ListGroupItem } from 'react-bootstrap'
 import { removeFavorite, addToFavorite } from "../Utilities/favoriteHelper"
 
-export default function RestaurantCard({ favorite, data, token, getRestaurants, filterRestaurants, location }) {   
-    console.log(location) 
+export default function RestaurantCard({ favorite, data, token, getRestaurants, filterRestaurants, location }) {
     return (
         <Col xs={12} sm={6} md={4}>
             <Card className="text-center m-2">

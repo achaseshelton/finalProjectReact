@@ -15,7 +15,6 @@ export default function Dashboard(props) {
                 <Row className="justify-content-center">
                     {props.restaurants.map((restaurant, index) => {
                         let userSaved = restaurant.favorites.find(f => f.user_id === props.user.id)
-                        console.log(userSaved)
                         if (userSaved) {
                             return <RestaurantCard
                             key={index}
