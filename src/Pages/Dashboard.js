@@ -10,8 +10,7 @@ export default function Dashboard(props) {
         <>
             <Row className="text-center display-5 text-bolder m-2">
                     <Col>Your Favorite Restaurants</Col>
-                </Row>
-            <div className="pt-2 pb-2">                
+                </Row>                
                 <Row className="justify-content-center">
                     {props.restaurants.map((restaurant, index) => {
                         let userSaved = restaurant.favorites.find(f => f.user_id === props.user.id)
@@ -27,7 +26,6 @@ export default function Dashboard(props) {
                         }
                     })}
                 </Row>
-            </div>
         </>
     )
 }

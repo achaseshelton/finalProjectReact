@@ -68,11 +68,11 @@ function App() {
 
     const urlHelper = () => {
         let str = "?";
-        
-         if(filter.hasOwnProperty("cuisine")) {
+
+        if (filter.hasOwnProperty("cuisine")) {
             str = str + "cuisine=" + filter.cuisine
-        } 
-        if(filter.hasOwnProperty("price")) {
+        }
+        if (filter.hasOwnProperty("price")) {
             str = str + "price=" + filter.price
         }
 
@@ -97,46 +97,49 @@ function App() {
 
     return (
         <>
-            <Menu
-                user={user}
-                setUser={setUser}
-                saveToken={saveToken}
-                token={token}
-                setToken={setToken} />
-            <Routes>
-                <Route path="/register" element={<Register
+            <div id="back"></div>
+            <div id="front">
+                <Menu
                     user={user}
                     setUser={setUser}
                     saveToken={saveToken}
-                    getUser={getUser}
-                />} />
-                <Route path="/dashboard" element={<Dashboard
-                    user={user}
-                    restaurants={restaurants}
-                    setUser={setUser}
-                    getRestaurants={getRestaurants}
-                    filterRestaurants={filterRestaurants}
-                    location={location}
                     token={token}
-                />} />
-                <Route path="/results" element={<Results
-                    restaurants={restaurants}
-                    token={token}
-                    setUser={setUser}
-                    user={user}
-                    location={location}
-                    filterRestaurants={filterRestaurants}
-                    getRestaurants={getRestaurants}
-                />} />
-                <Route path="/" element={<Home
-                    user={user}
-                    setUser={setUser}
-                    filter={filter}
-                    setFilter={setFilter}
-                    filterRestaurants={filterRestaurants}
-                    setRestaurants={setRestaurants}
-                />} />
-            </Routes>
+                    setToken={setToken} />
+                <Routes>
+                    <Route path="/register" element={<Register
+                        user={user}
+                        setUser={setUser}
+                        saveToken={saveToken}
+                        getUser={getUser}
+                    />} />
+                    <Route path="/dashboard" element={<Dashboard
+                        user={user}
+                        restaurants={restaurants}
+                        setUser={setUser}
+                        getRestaurants={getRestaurants}
+                        filterRestaurants={filterRestaurants}
+                        location={location}
+                        token={token}
+                    />} />
+                    <Route path="/results" element={<Results
+                        restaurants={restaurants}
+                        token={token}
+                        setUser={setUser}
+                        user={user}
+                        location={location}
+                        filterRestaurants={filterRestaurants}
+                        getRestaurants={getRestaurants}
+                    />} />
+                    <Route path="/" element={<Home
+                        user={user}
+                        setUser={setUser}
+                        filter={filter}
+                        setFilter={setFilter}
+                        filterRestaurants={filterRestaurants}
+                        setRestaurants={setRestaurants}
+                    />} />
+                </Routes>
+            </div>
         </>
     );
 }

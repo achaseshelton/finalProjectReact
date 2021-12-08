@@ -1,12 +1,16 @@
 @import "./bootstrap_variables_overwrite.scss";
 
-body {
-    z-index: 1;
+#front, #back { position: absolute; width: 100vw; }
+
+#back { min-height: 100vh; z-index: 1; }
+
+#front { z-index: 2; }
+
+#back {
     background-image: url(../img/background.jpg);
     background-repeat: no-repeat;
-    background-position: center;
     background-size: cover;
-    transition: opacity 0.5;
+    opacity: 0.2
 }
 
 @import "../../node_modules/bootstrap/scss/bootstrap";

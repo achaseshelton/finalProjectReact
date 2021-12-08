@@ -30,7 +30,7 @@ export default function Home(props) {
             <Form>
                 <Row>
                     <Col className="col-5">
-                        <Form.Label className="fw-bold">Price</Form.Label>
+                        <Form.Label className="fw-bold h3">Price</Form.Label>
                         <Form.Select name="price" value={props.filter.price || ""} onChange={handleChange}>
                             <option value="Choose...">Choose...</option>
                             <option value="1">1</option>
@@ -41,7 +41,7 @@ export default function Home(props) {
                         </Form.Select>
                     </Col>
                     <Col className="col-5">
-                        <Form.Label className="fw-bold">Cuisine</Form.Label>
+                        <Form.Label className="fw-bold h3">Cuisine</Form.Label>
                         <Form.Select name="cuisine" value={props.filter.cuisine || ""} onChange={handleChange}>
                             <option value="Choose...">Choose...</option>
                             <option value="Thai">Thai</option>

@@ -72,7 +72,7 @@ export default function Menu(props) {
                 <Container>
                     <Navbar.Brand as={Link} to="/" className="fw-bolder">Title</Navbar.Brand>
                     <Navbar.Collapse className="justify-content-end">
-                        <Link to='/register' className="fw-bold">
+                        <Link to='/register' className="fw-bold text-dark">
                             <>Register</>
                         </Link>
                         <Form.Control
@@ -100,11 +100,11 @@ export default function Menu(props) {
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
                     <Nav>
-                    <Nav.Link as={Link} to='/dashboard' className="m-3 fw-bold">
+                    <Nav.Link as={Link} to='/dashboard' className="m-3 fw-bold text-dark">
                         <>Dashboard</>
                     </Nav.Link>
                     </Nav>
-                    <Navbar.Text className="fw-bold">
+                    <Navbar.Text className="fw-bold text-dark">
                         Hello {props.user?.name}!
                     </Navbar.Text>
                     <Button className="m-3" variant="primary" onClick={logout}>Log Out</Button>

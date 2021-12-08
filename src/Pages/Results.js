@@ -12,7 +12,7 @@ export default function Results(props) {
                         :
                         <Col>{props.restaurants.length} Result</Col>}
                 </Row>
-                <Row className="row-cols-xs-1 row-cols-md-3">
+                <Row className="row-cols-xs-1 row-cols-md-3 justify-content-center">
                     {/* Need to check if restaurant id is in the user favorites, if not do a restaurant card, if it does appear in the favorites add a favorite card */}
                     {/* do i have a restaurant id that is equal to an id in my favorites */}
                     {props.restaurants.map((restaurant, index) => {
