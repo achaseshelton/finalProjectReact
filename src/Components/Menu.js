@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import { Navbar, Container, Form, Button } from 'react-bootstrap'
+import { Navbar, Container, Form, Button, Nav } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function Menu(props) {
@@ -96,12 +96,14 @@ export default function Menu(props) {
     return (
         <Navbar className="border border-dark border-3 border-rounded m-5">
             <Container>
-                <Navbar.Brand href="/">Navbar with text</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/">Navbar with text</Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
-                    <Link to='/dashboard' className="m-3">
+                    <Nav>
+                    <Nav.Link as={Link} to='/dashboard' className="m-3">
                         <>Dashboard</>
-                    </Link>
+                    </Nav.Link>
+                    </Nav>
                     <Navbar.Text>
                         Hello {props.user?.name}!
                     </Navbar.Text>

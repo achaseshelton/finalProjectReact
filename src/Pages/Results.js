@@ -3,8 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 import RestaurantCard from '../Components/RestaurantCard'
 
 export default function Results(props) {
-    console.log(props.restaurants)
-    console.log(props.user)
+    console.log(props)
     return (
         <Container className="border border-dark border-3">
             <Row className="text-center display-2 text-bold m-1">

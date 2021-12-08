@@ -17,7 +17,11 @@ export const removeFavorite = (id, token, getRestaurants, filterRestaurants, loc
         data: { restaurant_id: id }
     })
         .then(response => {
-            getRestaurants()
+            if (location.pathname === "/results") {
+                filterRestaurants()
+            } else {
+                getRestaurants()
+            }
         })
 }
 
@@ -38,6 +42,10 @@ export const addToFavorite = (id, token, getRestaurants, filterRestaurants, loca
         data: { restaurant_id: id }
     })
         .then(response => {
-            getRestaurants()
+            if (location.pathname === "/results") {
+                filterRestaurants()
+            } else {
+                getRestaurants()
+            }
         })
 }

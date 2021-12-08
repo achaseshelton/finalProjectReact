@@ -51,22 +51,22 @@ function App() {
             })
                 .then(response => {
                     // console.log(response)
-                    setUser(response.data.data[0])})
+                    setUser(response.data.data[0])
+                })
         }
     }
 
     const getRestaurants = () => {
-        console.log(window.location)
         axios({
             method: "get",
             url: "https://laravel-library-austenshelton638243.codeanyapp.com/api/restaurants",
         })
             .then(response => {
-                setRestaurants(response.data)})
+                setRestaurants(response.data)
+            })
     }
 
-    const filterRestaurants = e => {
-        e.preventDefault()
+    const filterRestaurants = () => {
         axios({
             method: "get",
             url: "https://laravel-library-austenshelton638243.codeanyapp.com/api/filter?cuisine=" + filter.cuisine + "&price=" + filter.price,
@@ -83,7 +83,7 @@ function App() {
     useEffect(getUser, [token]);
 
     return (
-        <>
+        <div id="main">
             <Menu
                 user={user}
                 setUser={setUser}
@@ -102,6 +102,7 @@ function App() {
                     restaurants={restaurants}
                     setUser={setUser}
                     getRestaurants={getRestaurants}
+                    filterRestaurants={filterRestaurants}
                     location={location}
                     token={token}
                 />} />
@@ -123,8 +124,7 @@ function App() {
                     setRestaurants={setRestaurants}
                 />} />
             </Routes>
-        </>
-
+        </div>
     );
 }
 

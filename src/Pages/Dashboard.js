@@ -3,7 +3,7 @@ import { Row, Col, Container } from 'react-bootstrap'
 import RestaurantCard from '../Components/RestaurantCard'
 
 export default function Dashboard(props) {
-
+    console.log(props)
     // Should I make a new call and get favorite restaurants and them take response and set state, then map over creating cards?
     // Or should I just make a call and then map over that response to show favorites?
     return (
@@ -24,6 +24,7 @@ export default function Dashboard(props) {
                             key={index}
                             data={restaurant}
                             getRestaurants={props.getRestaurants}
+                            filterRestaurants={props.filterRestaurants}
                             token={props.token}
                             location={props.location}
                             favorite={userSaved} />
