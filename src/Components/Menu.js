@@ -68,11 +68,11 @@ export default function Menu(props) {
     }
     if (props.token.length === 0) {
         return (
-            <Navbar className="border border-dark border-3 border-rounded m-3">
+            <Navbar className="m-5">
                 <Container>
-                    <Navbar.Brand href="/">Title</Navbar.Brand>
+                    <Navbar.Brand as={Link} to="/" className="fw-bolder">Title</Navbar.Brand>
                     <Navbar.Collapse className="justify-content-end">
-                        <Link to='/register'>
+                        <Link to='/register' className="fw-bold">
                             <>Register</>
                         </Link>
                         <Form.Control
@@ -94,17 +94,17 @@ export default function Menu(props) {
         )
     }
     return (
-        <Navbar className="border border-dark border-3 border-rounded m-5">
+        <Navbar className="m-5">
             <Container>
-                <Navbar.Brand as={Link} to="/">Navbar with text</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/" className="fw-bolder">Navbar with text</Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
                     <Nav>
-                    <Nav.Link as={Link} to='/dashboard' className="m-3">
+                    <Nav.Link as={Link} to='/dashboard' className="m-3 fw-bold">
                         <>Dashboard</>
                     </Nav.Link>
                     </Nav>
-                    <Navbar.Text>
+                    <Navbar.Text className="fw-bold">
                         Hello {props.user?.name}!
                     </Navbar.Text>
                     <Button className="m-3" variant="primary" onClick={logout}>Log Out</Button>

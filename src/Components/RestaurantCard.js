@@ -5,7 +5,7 @@ import { removeFavorite, addToFavorite } from "../Utilities/favoriteHelper"
 export default function RestaurantCard({ favorite, data, token, getRestaurants, filterRestaurants, location }) {   
     console.log(location) 
     return (
-        <Col>
+        <Col xs={12} sm={6} md={4}>
             <Card className="text-center m-2">
                 <Card.Body>
                     {/* make the name be a target link that sends to the restaurant website */}

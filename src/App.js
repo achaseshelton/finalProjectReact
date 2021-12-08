@@ -83,7 +83,7 @@ function App() {
     useEffect(getUser, [token]);
 
     return (
-        <div id="main">
+        <>
             <Menu
                 user={user}
                 setUser={setUser}
@@ -124,7 +124,7 @@ function App() {
                     setRestaurants={setRestaurants}
                 />} />
             </Routes>
-        </div>
+            </>
     );
 }
 
