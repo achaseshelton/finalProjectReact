@@ -1,6 +1,6 @@
 @import "./bootstrap_variables_overwrite.scss";
 
-#front, #back { position: absolute; width: 100vw; }
+#front, #back { position: absolute; min-width: 100vw;}
 
 #back { min-height: 100vh; z-index: 1; }
 
@@ -8,9 +8,10 @@
 
 #back {
     background-image: url(../img/background.jpg);
-    background-repeat: no-repeat;
     background-size: cover;
-    opacity: 0.2
+    background-repeat: no-repeat;
+    opacity: 0.25;
+    top:0;right:0;left:0;bottom:0;
 }
 
 @import "../../node_modules/bootstrap/scss/bootstrap";

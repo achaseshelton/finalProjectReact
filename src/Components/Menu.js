@@ -70,7 +70,7 @@ export default function Menu(props) {
         return (
             <Navbar className="m-5">
                 <Container>
-                    <Navbar.Brand as={Link} to="/" className="fw-bolder">Title</Navbar.Brand>
+                    <Navbar.Brand as={Link} to="/" className="fw-bolder h4">Let's Eat</Navbar.Brand>
                     <Navbar.Collapse className="justify-content-end">
                         <Link to='/register' className="fw-bold text-dark">
                             <>Register</>
@@ -96,7 +96,7 @@ export default function Menu(props) {
     return (
         <Navbar className="m-5">
             <Container>
-                <Navbar.Brand as={Link} to="/" className="fw-bolder">Navbar with text</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/" className="fw-bolder display-3">Let's Eat</Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
                     <Nav>

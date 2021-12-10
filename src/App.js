@@ -67,16 +67,18 @@ function App() {
     }
 
     const urlHelper = () => {
-        let str = "?";
+        let str = "https://laravel-library-austenshelton638243.codeanyapp.com/api/filter?";
 
-        if (filter.hasOwnProperty("cuisine")) {
-            str = str + "cuisine=" + filter.cuisine
+        if ((filter.hasOwnProperty("cuisine") && filter.cuisine !== "Choose...") && (filter.hasOwnProperty("price") && filter.price  !== "Choose...")){
+            return str + "cuisine=" + filter.cuisine + "&price=" + filter.price
         }
-        if (filter.hasOwnProperty("price")) {
-            str = str + "price=" + filter.price
+        if (filter.hasOwnProperty("cuisine") && filter.cuisine !== "Choose...") {
+            return str + "cuisine=" + filter.cuisine
+        }
+        if (filter.hasOwnProperty("price") && filter.price !== "Choose...") {
+            return str + "price=" + filter.price
         }
 
-        return "https://laravel-library-austenshelton638243.codeanyapp.com/api/filter" + str;
     }
 
     const filterRestaurants = () => {
@@ -97,7 +99,6 @@ function App() {
 
     return (
         <>
-            <div id="back"></div>
             <div id="front">
                 <Menu
                     user={user}
@@ -116,6 +117,7 @@ function App() {
                         user={user}
                         restaurants={restaurants}
                         setUser={setUser}
+                        setRestaurants={setRestaurants}
                         getRestaurants={getRestaurants}
                         filterRestaurants={filterRestaurants}
                         location={location}
@@ -140,6 +142,7 @@ function App() {
                     />} />
                 </Routes>
             </div>
+            <div id="back"></div>
         </>
     );
 }
