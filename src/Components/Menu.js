@@ -13,7 +13,7 @@ export default function Menu(props) {
             data: {
                 "grant_type": "password",
                 "client_id": 2,
-                "client_secret": "xAl8ZXkr5T2CdLoRlbnlB2iUrAA2ieRAqpReuvk3",
+                "client_secret": "S6wgXyPP75kXBRg27PFedabreqqA8U6VqVcUS050",
                 "username": props.user.email,
                 "password": props.user.password,
                 "scope": "",

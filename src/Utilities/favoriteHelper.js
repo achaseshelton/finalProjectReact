@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 export const removeFavorite = (id, token, getRestaurants, filterRestaurants, location) => {
-    console.log(location)
     axios({
         method: "delete",
         url: "https://laravel-library-austenshelton638243.codeanyapp.com/api/v1/remove",
@@ -26,7 +25,6 @@ export const removeFavorite = (id, token, getRestaurants, filterRestaurants, loc
 }
 
 export const addToFavorite = (id, token, getRestaurants, filterRestaurants, location) => {
-    console.log(location)
     axios({
         method: "post",
         url: "https://laravel-library-austenshelton638243.codeanyapp.com/api/v1/favorite",

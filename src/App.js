@@ -19,7 +19,6 @@ function App() {
     const location = useLocation();
 
     const saveToken = (newToken) => {
-        console.log(newToken);
         localStorage.setItem("authToken", newToken);
         setToken(newToken)
         navigate("/dashboard")
@@ -27,7 +26,6 @@ function App() {
 
     const userChange = () => {
         let authToken = localStorage.getItem("authToken")
-        console.log(authToken);
         if (authToken) {
             setToken(authToken)
         }
@@ -50,7 +48,6 @@ function App() {
                 }
             })
                 .then(response => {
-                    // console.log(response)
                     setUser(response.data.data[0])
                 })
         }
@@ -78,6 +75,9 @@ function App() {
         if (filter.hasOwnProperty("price") && filter.price !== "Choose...") {
             return str + "price=" + filter.price
         }
+        else {
+            return "https://laravel-library-austenshelton638243.codeanyapp.com/api/restaurants"
+        }
 
     }
 
@@ -87,7 +87,6 @@ function App() {
             url: urlHelper(),
         })
             .then(response => {
-                console.log(response.data)
                 setRestaurants(response.data)
                 navigate('/results')
             })
@@ -99,7 +98,6 @@ function App() {
 
     return (
         <>
-            <div id="front">
                 <Menu
                     user={user}
                     setUser={setUser}
@@ -141,8 +139,6 @@ function App() {
                         setRestaurants={setRestaurants}
                     />} />
                 </Routes>
-            </div>
-            <div id="back"></div>
         </>
     );
 }

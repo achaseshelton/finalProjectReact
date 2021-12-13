@@ -12,7 +12,6 @@ export default function Home(props) {
             url: "https://laravel-library-austenshelton638243.codeanyapp.com/api/hungry",
         })
             .then(response => {
-                console.log(response.data)
                 props.setRestaurants(response.data)
                 navigate('/results')
             })
@@ -34,31 +33,31 @@ export default function Home(props) {
                         <Carousel.Item>
                             <img
                                 className="d-block w-100"
-                                src="./img/wings3.jpg"
+                                src="./img/wings2.jpg"
                                 alt="First slide"
                             />
-                            <Carousel.Caption className="text-center">
-                                <p></p>
+                            <Carousel.Caption className="text-center fw-bold">
+                                <h3>When you need to find a place to eat,</h3>
                             </Carousel.Caption>
                         </Carousel.Item>
                         <Carousel.Item>
                             <img
                                 className="d-block w-100"
-                                src="./img/tacos3.jpg"
+                                src="./img/tacos2.jpg"
                                 alt="Second slide"
                             />
-                            <Carousel.Caption className="text-center">
-                                <p></p>
+                            <Carousel.Caption className="text-center fw-bold">
+                                <h3>We're here to help!</h3>
                             </Carousel.Caption>
                         </Carousel.Item>
                         <Carousel.Item>
                             <img
                                 className="d-block w-100"
-                                src="./img/sushi3.jpg"
+                                src="./img/sushi2.jpg"
                                 alt="Third slide"
                             />
-                            <Carousel.Caption className="text-center">
-                                <h3>LetsEat</h3>
+                            <Carousel.Caption className="text-center fw-bolder">
+                                <h1>LetsEat</h1>
                             </Carousel.Caption>
                         </Carousel.Item>
                     </Carousel>
@@ -67,7 +66,7 @@ export default function Home(props) {
             </Row>
             <Form>
                 <Row className="m-2">
-                    <Col className="col-5">
+                    <Col className="col-5 ml-2">
                         <Form.Label className="fw-bold h3">Price</Form.Label>
                         <Form.Select name="price" value={props.filter.price || ""} onChange={handleChange}>
                             <option value="Choose...">Choose...</option>
@@ -88,10 +87,10 @@ export default function Home(props) {
                             <option value="Chinese">Chinese</option>
                             <option value="Japanese">Japanese</option>
                             <option value="French">French</option>
-                            <option value="African">Brunch</option>
+                            <option value="Brunch">Brunch</option>
                             <option value="Mexican">Mexican</option>
                             <option value="Cuban">Cuban</option>
-                            <option value="Peruvian">BBQ</option>
+                            <option value="BBQ">BBQ</option>
                             <option value="American">American</option>
                             <option value="Southern">Southern</option>
                             <option value="Seafood">Seafood</option>
@@ -107,9 +106,11 @@ export default function Home(props) {
                 </Row>
             </Form>
             <Row className="justify-content-center">
-                <Col className="col-4">
+                <Col className="col-4>"></Col>
+                <Col className="col-4 text-center p-3">
                     <Button variant="primary" size="lg" onClick={getRandomRestaurants}>I'm Feeling Hungry</Button>
                 </Col>
+                <Col className="col-4"></Col>
             </Row>
         </>
     );
